@@ -1,0 +1,24 @@
+@import 'styles/vars';
+
+.reverse-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: calc(100% - 25px);
+    top: 40%;
+    width: 60px;
+    height: 60px;
+    background-color: $blue;
+    border: 8px solid $main-bg;
+    border-radius: 100%;
+    box-shadow: 0 0 15px 0 rgba(gray, .3);
+    z-index: 1;
+    cursor: pointer;
+    transition: transform .2s;
+    &:hover {
+        transform: rotate(-180deg);
+
+    }
+
+}

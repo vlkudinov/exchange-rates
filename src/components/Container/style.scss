@@ -1,0 +1,22 @@
+@import 'styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @include desktop {
+    width: 940px !important;
+  }
+  @include laptop {
+    width: 750px !important;
+  }
+  @include tablet {
+    width: 480px !important;
+  }
+  @include phone {
+    width: 100% !important;
+    padding: 2%;
+  }
+}

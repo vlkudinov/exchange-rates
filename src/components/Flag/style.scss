@@ -1,0 +1,293 @@
+.flag {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  &_circle {
+      border-radius: 100%;
+      width: 32px;
+      height: 32px;
+      box-shadow: 0 0 5px 0 rgba(#6f7995, .4);
+      overflow: hidden;
+  }
+}
+
+.flag__icon-xl {
+  width: 48px;
+  height: 48px;
+  background: url('icons/flags-xl.png') no-repeat;
+  margin-left: calc(50% - 24px);
+
+  &_aud {
+    background-position: -48px 0;
+  }
+
+
+  &_bgn {
+    background-position: -96px 0;
+  }
+
+  &_brl {
+    background-position: -144px 0;
+  }
+
+  &_cad {
+    background-position: -192px 0;
+  }
+
+  &_chf {
+    background-position: -240px 0;
+  }
+
+  &_cny {
+    background-position: 0 -48px;
+  }
+
+  &_czk {
+    background-position: -48px -48px;
+  }
+
+  &_dkk {
+    background-position: -96px -48px;
+  }
+
+  &_eur {
+    background-position: -144px -48px;
+  }
+
+  &_gbp {
+    background-position: -192px -48px;
+  }
+
+  &_hkd {
+    background-position: -240px -48px;
+  }
+
+  &_hrk {
+    background-position: 0 -96px;
+  }
+
+  &_huf {
+    background-position: -48px -96px;
+  }
+
+  &_idr {
+    background-position: -96px -96px;
+  }
+
+  &_ils {
+    background-position: -144px -96px;
+  }
+
+  &_inr {
+    background-position: -192px -96px;
+  }
+
+  &_isk {
+    background-position: -240px -96px;
+  }
+
+  &_jpy {
+    background-position: 0 -144px;
+  }
+
+  &_krw {
+    background-position: -48px -144px;
+  }
+
+  &_mxn {
+    background-position: -96px -144px;
+  }
+
+  &_myr {
+    background-position: -144px -144px;
+  }
+
+  &_nok {
+    background-position: -192px -144px;
+  }
+
+  &_nzd {
+    background-position: -240px -144px;
+  }
+
+  &_php {
+    background-position: 0 -192px;
+  }
+
+  &_pln {
+    background-position: -48px -192px;
+  }
+
+  &_ron {
+    background-position: -96px -192px;
+  }
+
+  &_rub {
+    background-position: -144px -192px;
+  }
+
+  &_sek {
+    background-position: -192px -192px;
+  }
+
+  &_sgd {
+    background-position: -240px -192px;
+  }
+
+  &_thb {
+    background-position: 0 -240px;
+  }
+
+  &_try {
+    background-position: -48px -240px;
+  }
+
+  &_usd {
+    background-position: -96px -240px;
+  }
+
+  &_zar {
+    background-position: -144px -240px;
+  }
+
+}
+
+.flag__icon-xs {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('icons/flags-xs.png') no-repeat;
+  margin-right: 5px;
+  &_aud {
+    background-position: -24px 0;
+  }
+
+  &_bgn {
+    background-position: -48px 0;
+  }
+
+  &_brl {
+    background-position: -72px 0;
+  }
+
+  &_cad {
+    background-position: -96px 0;
+  }
+
+  &_chf {
+    background-position: -120px 0;
+  }
+
+  &_cny {
+    background-position: 0 -24px;
+  }
+
+  &_czk {
+    background-position: -24px -24px;
+  }
+
+  &_dkk {
+    background-position: -48px -24px;
+  }
+
+  &_eur {
+    background-position: -72px -24px;
+  }
+
+  &_gbp {
+    background-position: -96px -24px;
+  }
+
+  &_hkd {
+    background-position: -120px -24px;
+  }
+
+  &_hrk {
+    background-position: 0 -48px;
+  }
+
+  &_huf {
+    background-position: -24px -48px;
+  }
+
+  &_idr {
+    background-position: -48px -48px;
+  }
+
+  &_ils {
+    background-position: -72px -48px;
+  }
+
+  &_inr {
+    background-position: -96px -48px;
+  }
+
+  &_isk {
+    background-position: -120px -48px;
+  }
+
+  &_jpy {
+    background-position: 0 -72px;
+  }
+
+  &_krw {
+    background-position: -24px -72px;
+  }
+
+  &_mxn {
+    background-position: -48px -72px;
+  }
+
+  &_myr {
+    background-position: -72px -72px;
+  }
+
+  &_nok {
+    background-position: -96px -72px;
+  }
+
+  &_nzd {
+    background-position: -120px -72px;
+  }
+
+  &_php {
+    background-position: 0 -96px;
+  }
+
+  &_pln {
+    background-position: -24px -96px;
+  }
+
+  &_ron {
+    background-position: -48px -96px;
+  }
+
+  &_rub {
+    background-position: -72px -96px;
+  }
+
+  &_sek {
+    background-position: -96px -96px;
+  }
+
+  &_sgd {
+    background-position: -120px -96px;
+  }
+
+  &_thb {
+    background-position: 0 -120px;
+  }
+
+  &_try {
+    background-position: -24px -120px;
+  }
+
+  &_usd {
+    background-position: -48px -120px;
+  }
+
+  &_zar {
+    background-position: -72px -120px;
+  }
+}

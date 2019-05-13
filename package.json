@@ -1,0 +1,63 @@
+{
+  "name": "exchange-rates",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "10.x"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.0",
+    "react-scripts": "3.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "connected-react-router": "^6.4.0",
+    "history": "^4.9.0",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^7.0.2",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-select": "^2.4.3",
+    "recharts": "^1.5.0",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.5",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^4.0.0",
+    "sanitize.css": "^5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged",
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "lint-staged": {
+    "./src/**/**/*.{js,jsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

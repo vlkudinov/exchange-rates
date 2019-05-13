@@ -1,0 +1,48 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+
+.nav-bar {
+  position: fixed;
+  width: $nav-bar-width;
+  height: 100%;
+  background-color: $blue;
+  box-shadow: 0 0 8px 0 rgba($blue, 1);
+  z-index: 100;
+
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+  &__item {
+    padding: 10px 0 10px 40px;
+    color: white;
+    white-space: nowrap;
+    border-left: 6px solid transparent;
+    svg path {
+      fill: white;
+    }
+  }
+  &__item_active {
+    background-color: $dark-blue;
+    border-color: $cyan;
+    svg path {
+      fill: $cyan;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    margin-left: 10px;
+  }
+  svg  {
+    width: 22px;
+  }
+  &__icon {
+    margin-right: 10px;
+  }
+}
+
