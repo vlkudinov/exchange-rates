@@ -1,2 +1,2 @@
 
-#### Demo [here](https://exchange-rates-react.herokuapp.com/)
+#### Demo https://exchange-rates-react.herokuapp.com/
