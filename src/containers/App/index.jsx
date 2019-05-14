@@ -5,6 +5,7 @@ import Home from 'containers/Home';
 import Converter from 'containers/Converter';
 import Chart from 'containers/Chart';
 import Container from 'components/Container';
+import Loader from 'components/Loader';
 import * as actions from 'actions';
 import { connect } from 'react-redux';
 
@@ -52,7 +53,7 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.loaded ? this.renderApp() : <div>Loading...</div>;
+    return this.state.loaded ? this.renderApp() : <Loader />;
   }
 }
 

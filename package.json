@@ -3,27 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "10.x"
+    "node": "10.15.3"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.0",
-    "react-scripts": "3.0.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
+    "husky": "^0.14.3",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
+    "prettier": "^1.11.0",
+    "lint-staged": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^7.0.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "3.0.0",
     "react-select": "^2.4.3",
     "recharts": "^1.5.0",
     "redux": "^4.0.1",
@@ -33,6 +33,9 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^4.0.0",
     "sanitize.css": "^5.0.0"
+  },
+  "resolutions": {
+    "babel-jest": "24.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
