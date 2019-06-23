@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from 'components/NavBar';
-import Home from 'containers/Home';
-import Converter from 'containers/Converter';
-import Chart from 'containers/Chart';
+import HomePage from 'containers/HomePage';
+import ConverterPage from 'containers/ConverterPage';
+import ChartPage from 'containers/ChartPage';
 import Container from 'components/Container';
 import Loader from 'components/Loader';
 import ErrorMessage from 'components/ErrorMessage';
@@ -62,9 +62,9 @@ class App extends React.Component {
         <main>
           <Container>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/converter" component={Converter} />
-              <Route path="/chart" component={Chart} />
+              <Route exact path="/" component={HomePage} />
+              <Route path="/converter" component={ConverterPage} />
+              <Route path="/chart" component={ChartPage} />
             </Switch>
           </Container>
         </main>

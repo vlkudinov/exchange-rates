@@ -6,32 +6,36 @@ import CurrencySelect from 'components/Select/CurrencySelect';
 import { connect } from 'react-redux';
 import { getRecentRatesSortedByFavorites, compareHistoricalRates } from 'selectors';
 
-class HomePage extends React.Component {
-  renderRates() {
-    return (
-      <React.Fragment>
-        <Title>{`${this.props.base} exchange rates against currencies published by the European Central Bank`}</Title>
-        <div className="rates">
-          <CurrencySelect value={this.props.base} onChange={this.props.onBaseChange} options={this.props.options} />
-          <RatesTable
-            rates={this.props.rates}
-            base={this.props.base}
-            period={this.props.period}
-            dynamic={this.props.dynamic}
-            favourites={this.props.favourites}
-            onFavouritesAdd={this.props.onFavouritesAdd}
-            changePeriod={this.props.onPeriodChange}
-            onConvertibleChange={this.props.onConvertibleChange}
-          />
-        </div>
-      </React.Fragment>
-    );
-  }
-
-  render() {
-    return this.props.rates ? this.renderRates() : <div>Loading...</div>;
-  }
-}
+const HomePage = ({
+  base,
+  rates,
+  period,
+  dynamic,
+  favourites,
+  options,
+  onBaseChange,
+  onFavouritesAdd,
+  onPeriodChange,
+  onConvertibleChange
+}) => (
+  <React.Fragment>
+    <Title>{`${base} exchange rates against currencies published by the European Central Bank`}</Title>
+    <div className="rates">
+      <CurrencySelect value={base} onChange={onBaseChange} options={options} />
+      <RatesTable
+        rates={rates}
+        base={base}
+        period={period}
+        dynamic={dynamic}
+        favourites={favourites}
+        options={options}
+        onFavouritesAdd={onFavouritesAdd}
+        changePeriod={onPeriodChange}
+        onConvertibleChange={onConvertibleChange}
+      />
+    </div>
+  </React.Fragment>
+);
 
 const mapStateToProps = state => ({
   rates: getRecentRatesSortedByFavorites(state),
@@ -39,7 +43,7 @@ const mapStateToProps = state => ({
   period: state.currency.period.days,
   convertible: state.currency.convertible,
   favourites: state.currency.favourites,
-  dynamic: compareHistoricalRates(state),
+  dynamic: compareHistoricalRates(state)
 });
 
 const mapDispatchToProps = dispatch => ({

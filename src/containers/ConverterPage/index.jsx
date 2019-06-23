@@ -18,8 +18,8 @@ class ConverterPage extends React.Component {
       convertible: null
     },
     unit: {
-      base : 0,
-      convertible : 0
+      base: 0,
+      convertible: 0
     }
   };
 
@@ -38,7 +38,7 @@ class ConverterPage extends React.Component {
         base: 1 * props.rates[props.convertible],
         convertible: 1 / props.rates[props.convertible]
       }
-    }
+    };
   }
 
   renderConverter() {
@@ -47,16 +47,8 @@ class ConverterPage extends React.Component {
         <Title>Currency Converter</Title>
         <div className="converter">
           <div className="converter__from">
-            <CurrencySelect
-              value={this.props.base}
-              options={this.props.options}
-              onChange={this.props.onBaseChange}
-            />
-            <BaseInput
-              value={this.state.amount}
-              symbol={this.state.symbol.base}
-              handleChange={this.handleChange}
-            />
+            <CurrencySelect value={this.props.base} options={this.props.options} onChange={this.props.onBaseChange} />
+            <BaseInput value={this.state.amount} symbol={this.state.symbol.base} handleChange={this.handleChange} />
             <span className="converter__unit">
               1 {this.props.base} = {this.state.unit.base || 0} {this.props.convertible}
             </span>
