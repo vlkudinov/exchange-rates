@@ -6,33 +6,53 @@ import Converter from 'containers/Converter';
 import Chart from 'containers/Chart';
 import Container from 'components/Container';
 import Loader from 'components/Loader';
+import ErrorMessage from 'components/ErrorMessage';
 import * as actions from 'actions';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
   state = {
-    loaded: false
+    loading: true,
+    error: false,
+    errorMessage: null
   };
 
-  async componentDidMount() {
-    try {
-      await this.props.fetchRates(this.props.base, this.props.period);
-      this.setState({ loaded: true });
-    } catch (e) {
-      return e;
+  componentDidMount() {
+    const { base, period } = this.props;
+
+    this.updateRates(base, period);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { base, period } = this.props;
+    const isBaseUpdated = base !== prevProps.base;
+    const isPeriodUpdated = period !== prevProps.period;
+
+    if (isBaseUpdated || isPeriodUpdated) {
+      this.updateRates(base, period);
     }
   }
 
-  async componentDidUpdate(prevProps) {
-    const { base, period } = this.props;
+  onLoaded = () => {
+    this.setState({
+      loading: false,
+      error: false
+    });
+  };
 
-    try {
-      if (base !== prevProps.base || period !== prevProps.period) {
-        await this.props.fetchRates(base, period);
-      }
-    } catch (e) {
-      return e;
-    }
+  onError = err => {
+    this.setState({
+      loading: false,
+      error: true,
+      errorMessage: err.message
+    });
+  };
+
+  updateRates(base, period) {
+    this.props
+      .fetchRates(base, period)
+      .then(this.onLoaded)
+      .catch(this.onError);
   }
 
   renderApp() {
@@ -53,7 +73,20 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.loaded ? this.renderApp() : <Loader />;
+    const { loading, error, errorMessage } = this.state;
+    const hasData = !(loading || error);
+
+    const message = error ? <ErrorMessage message={errorMessage} /> : null;
+    const loader = loading ? <Loader /> : null;
+    const content = hasData ? this.renderApp() : null;
+
+    return (
+      <React.Fragment>
+        {message}
+        {loader}
+        {content}
+      </React.Fragment>
+    );
   }
 }
 
