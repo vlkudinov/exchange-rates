@@ -11,47 +11,47 @@ class ChartPage extends React.Component {
     periodRange: [7, 30, 60, 90, 365]
   };
 
-  renderConverter() {
+  render() {
+    const {
+      base,
+      rates,
+      convertible,
+      options,
+      periodRange,
+      activePeriod,
+      chartsData,
+      onBaseChange,
+      onConvertibleChange,
+      onPeriodChange
+    } = this.props;
+
     return (
       <div className="chart">
         <div className="chart__from">
-          <CurrencySelect value={this.props.base} onChange={this.props.onBaseChange} options={this.props.options} />
+          <CurrencySelect value={base} options={options} onChange={onBaseChange} />
         </div>
         <div className="chart__to">
-          <CurrencySelect
-            value={this.props.convertible}
-            onChange={this.props.onConvertibleChange}
-            options={this.props.options}
-          />
+          <CurrencySelect value={convertible} onChange={onConvertibleChange} options={options} />
         </div>
         <div className="chart__options chart-options">
           <ul className="chart-options__list">
-            {this.props.periodRange.map(range => {
+            {periodRange.map(period => {
               const liClass = cn({
                 'chart-options__item': true,
-                'chart-options__item_active': range === this.props.activePeriod
+                'chart-options__item_active': period === activePeriod
               });
               return (
-                <li key={range} onClick={() => this.props.onPeriodChange(range)} className={liClass}>
-                  {range}D
+                <li key={period} onClick={() => onPeriodChange(period)} className={liClass}>
+                  {period}D
                 </li>
               );
             })}
           </ul>
         </div>
 
-        <Chart
-          data={this.props.chartsData}
-          base={this.props.base}
-          convertible={this.props.convertible}
-          rates={this.props.rates}
-        />
+        <Chart data={chartsData} base={base} convertible={convertible} rates={rates} />
       </div>
     );
-  }
-
-  render() {
-    return this.props.rates ? this.renderConverter() : <div>Loading...</div>;
   }
 }
 
