@@ -6,7 +6,6 @@ import Title from 'components/Title';
 import CurrencySelect from 'components/Select/CurrencySelect';
 import BaseInput from 'components/Input/BaseInput';
 import ConvertibleInput from 'components/Input/BaseInput';
-
 import { getRecentRates } from 'selectors';
 
 class ConverterPage extends React.Component {
@@ -41,42 +40,32 @@ class ConverterPage extends React.Component {
     };
   }
 
-  renderConverter() {
+  render() {
+    const { base, options, convertible, onBaseChange, onConvertibleChange, onReverseCurrency } = this.props;
+    const { amount, symbol, unit, result } = this.state;
+
     return (
       <React.Fragment>
         <Title>Currency Converter</Title>
         <div className="converter">
           <div className="converter__from">
-            <CurrencySelect value={this.props.base} options={this.props.options} onChange={this.props.onBaseChange} />
-            <BaseInput value={this.state.amount} symbol={this.state.symbol.base} handleChange={this.handleChange} />
+            <CurrencySelect value={base} options={options} onChange={onBaseChange} />
+            <BaseInput value={amount} symbol={symbol.base} handleChange={this.handleChange} />
             <span className="converter__unit">
-              1 {this.props.base} = {this.state.unit.base || 0} {this.props.convertible}
+              1 {base} = {unit.base || 0} {convertible}
             </span>
-            <ReverseButton handleClick={this.props.onReverseCurrency} />
+            <ReverseButton handleClick={onReverseCurrency} />
           </div>
           <div className="converter__to">
-            <CurrencySelect
-              value={this.props.convertible}
-              label="To"
-              onChange={this.props.onConvertibleChange}
-              options={this.props.options}
-            />
-            <ConvertibleInput
-              value={this.state.result}
-              symbol={this.state.symbol.convertible}
-              handleChange={this.handleChange}
-            />
+            <CurrencySelect value={convertible} label="To" onChange={onConvertibleChange} options={options} />
+            <ConvertibleInput value={result} symbol={symbol.convertible} handleChange={this.handleChange} />
             <span className="converter__unit">
-              1 {this.props.convertible} = {this.state.unit.convertible || 0} {this.props.base}
+              1 {convertible} = {unit.convertible || 0} {base}
             </span>
           </div>
         </div>
       </React.Fragment>
     );
-  }
-
-  render() {
-    return this.props.rates ? this.renderConverter() : <div>Loading...</div>;
   }
 }
 
