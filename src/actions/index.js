@@ -1,7 +1,9 @@
 import { createAction } from 'redux-actions';
-import * as webAPI from '../api';
+import ApiService from 'api';
 
-export const fetchRates = createAction('FETCH_RATES', (currency, period) => webAPI.fetchRates(currency, period));
+const apiService = new ApiService();
+
+export const fetchRates = createAction('FETCH_RATES', (currency, period) => apiService.fetchRates(currency, period));
 export const changeBaseCurrency = createAction('CHANGE_BASE_CURRENCY');
 export const changeConvertibleCurrency = createAction('CHANGE_CONVERTIBLE_CURRENCY');
 export const reverseCurrency = createAction('REVERSE_CURRENCY');

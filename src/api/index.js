@@ -1,19 +1,25 @@
-import axios from 'axios';
+export default class ApiService {
+  _proxy = 'https://cors-anywhere.herokuapp.com/';
+  _apiBaseUrl = 'https://api.exchangeratesapi.io/';
 
-export async function fetchRates(currency = 'EUR', period) {
-  const proxy = 'https://cors-anywhere.herokuapp.com/';
-  const date = new Date();
-  const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  date.setDate(date.getDate() - period);
-  const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-
-  try {
-    const { data } = await axios.get(
-      `${proxy}https://api.exchangeratesapi.io/history?start_at=${formattedDate}&end_at=${today}&base=${currency}`
-    );
-
-    return await data;
-  } catch (e) {
-    throw e;
+  static getTodayDate() {
+    const date = new Date();
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   }
+
+  static getHistoryDate(period) {
+    const date = new Date();
+    date.setDate(date.getDate() - period);
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  }
+
+  fetchRates = async (currency = 'EUR', period) => {
+    const query = `start_at=${ApiService.getHistoryDate(period)}&end_at=${ApiService.getTodayDate()}&base=${currency}`;
+    const res = await fetch(`${this._proxy}${this._apiBaseUrl}history?${query}`);
+
+    if (!res.ok) {
+      throw new Error(`Could not fetch api, received ${res.status}`);
+    }
+    return await res.json();
+  };
 }
